@@ -312,7 +312,7 @@ func MergeCreate(db *gorm.DB, onConflict clause.OnConflict, values clause.Values
 
 	written := false
 	for _, column := range values.Columns {
-		if db.Statement.Schema.PrioritizedPrimaryField == nil || !db.Statement.Schema.PrioritizedPrimaryField.AutoIncrement || db.Statement.Schema.PrioritizedPrimaryField.DBName != column.Name {
+		if db.Statement.Schema.PrioritizedPrimaryField == nil || db.Statement.Schema.PrioritizedPrimaryField.AutoIncrement || db.Statement.Schema.PrioritizedPrimaryField.DBName != column.Name {
 			if written {
 				_ = db.Statement.WriteByte(',')
 			}
@@ -325,7 +325,7 @@ func MergeCreate(db *gorm.DB, onConflict clause.OnConflict, values clause.Values
 
 	written = false
 	for _, column := range values.Columns {
-		if db.Statement.Schema.PrioritizedPrimaryField == nil || !db.Statement.Schema.PrioritizedPrimaryField.AutoIncrement || db.Statement.Schema.PrioritizedPrimaryField.DBName != column.Name {
+		if db.Statement.Schema.PrioritizedPrimaryField == nil || db.Statement.Schema.PrioritizedPrimaryField.AutoIncrement || db.Statement.Schema.PrioritizedPrimaryField.DBName != column.Name {
 			if written {
 				_ = db.Statement.WriteByte(',')
 			}
